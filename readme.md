@@ -22,12 +22,21 @@ const connectDB = async () => {
 export default connectDB
 
 index.js
-
-import dotenv form "dotenv"
-import connectionDb form ----
+import dotenv from "dotenv"
+import connectionDB from "./db/index.js"
+import { app } from "./app.js"
 
 dotenv.config({
-    path: "./env"
+    path: './env'
 })
 
-connectionDb();
+connectionDB()
+.then(()=> {
+    app.listen(process.env.PORT || 8000, () => {
+        console.log(`server is running at port ${process.env.PORT}`)
+    })
+})
+.catch((error)=>{
+    console.log("MONGODB connection is failed", error)
+})
+
