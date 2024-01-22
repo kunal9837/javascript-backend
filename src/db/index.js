@@ -7,6 +7,7 @@ const connectDB = async () => {
        console.log(`mongob is connected successfully || host ${connectionInheri.connection.host}`)
     } catch (error) {
         console.log("mongodb connection is failed", error)
+        process.exit(1);
     }
 }
 
